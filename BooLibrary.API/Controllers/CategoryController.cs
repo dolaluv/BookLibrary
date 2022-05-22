@@ -1,4 +1,7 @@
-﻿using BooLibrary.Abstractions.Services.Business;
+﻿using BooLibrary.Abstractions.Models;
+using BooLibrary.Abstractions.Models.Dtos;
+using BooLibrary.Abstractions.Services.Business;
+using BooLibrary.API.Helpers;
 using Microsoft.AspNetCore.Mvc;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
@@ -16,31 +19,83 @@ namespace BooLibrary.API.Controllers
             this.categoryService = categoryService;
         }
 
-        // GET: api/<CategoryController>
-        [HttpGet]
-        public IEnumerable<string> Get()
+        
+        [HttpGet("fetch-categories")]
+        [ProducesResponseType(typeof(ResponseModel), 200)]
+        public async Task<IActionResult> Get()
         {
-            this.categoryService.GetCategories();
-            return new string[] { "value1", "value2" };
+            try
+            {  
+                var categories = await categoryService.GetCategories();
+                if (categories != null)
+                    return Ok(StandardResponse.Ok("Successfully fetch loan history", categories));
+                else
+                    return BadRequest(StandardResponse.BadRequest("An error occured"));
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, StandardResponse.InternalServerError(ex.ToString(), null));
+            }
         }
 
-        // GET api/<CategoryController>/5
-        [HttpGet("{id}")]
-        public string Get(int id)
+       
+        [HttpGet("GetCategoryById/{Id}")]
+        [ProducesResponseType(typeof(ResponseModel), 200)]
+        public async Task<IActionResult> GetCategoryById(int Id)
         {
-            return "value";
+            try
+            {
+                var category = await categoryService.GetCategory(Id);
+                if (category != null)
+                    return Ok(StandardResponse.Ok("Successfully fetch Category", category));
+                else
+                    return BadRequest(StandardResponse.BadRequest("An error occured"));
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, StandardResponse.InternalServerError(ex.ToString(), null));
+            }
         }
+
 
         // POST api/<CategoryController>
-        [HttpPost]
-        public void Post([FromBody] string value)
+        [HttpPost("CreateCategory")]
+        [ProducesResponseType(typeof(ResponseModel), 200)]
+        public async Task<IActionResult> CreateCategory([FromBody] CategoryDto categoryDto)
         {
+            try
+            {
+                var result = await categoryService.CreateCategory(categoryDto);
+                if (result != null)
+                    return Ok(StandardResponse.Ok("Category Added Successfully", result));
+                else
+                    return BadRequest(StandardResponse.BadRequest("An error occured"));
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, StandardResponse.InternalServerError(ex.ToString(), null));
+            }
+            return null;
         }
 
         // PUT api/<CategoryController>/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+        [HttpPut("UpdateCategory")]
+        [ProducesResponseType(typeof(ResponseModel), 200)]
+        public async Task<IActionResult> UpdateCategory([FromBody] Category category )
         {
+            try
+            {
+                var result = await categoryService.UpdateCategory(category);
+                if (result != null)
+                    return Ok(StandardResponse.Ok("Category Added Successfully", result));
+                else
+                    return BadRequest(StandardResponse.BadRequest("An error occured"));
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, StandardResponse.InternalServerError(ex.ToString(), null));
+            }
+            return null;
         }
 
         // DELETE api/<CategoryController>/5
