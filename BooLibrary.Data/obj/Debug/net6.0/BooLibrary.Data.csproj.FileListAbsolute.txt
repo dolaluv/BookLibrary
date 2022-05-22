@@ -1,0 +1,17 @@
+C:\Users\iliasuod\Documents\BookLibrary\BooLibrary.Data\bin\Debug\net6.0\BooLibrary.Data.deps.json
+C:\Users\iliasuod\Documents\BookLibrary\BooLibrary.Data\bin\Debug\net6.0\BooLibrary.Data.runtimeconfig.json
+C:\Users\iliasuod\Documents\BookLibrary\BooLibrary.Data\bin\Debug\net6.0\BooLibrary.Data.dll
+C:\Users\iliasuod\Documents\BookLibrary\BooLibrary.Data\bin\Debug\net6.0\ref\BooLibrary.Data.dll
+C:\Users\iliasuod\Documents\BookLibrary\BooLibrary.Data\bin\Debug\net6.0\BooLibrary.Data.pdb
+C:\Users\iliasuod\Documents\BookLibrary\BooLibrary.Data\bin\Debug\net6.0\BooLibrary.Abstractions.dll
+C:\Users\iliasuod\Documents\BookLibrary\BooLibrary.Data\bin\Debug\net6.0\BooLibrary.Abstractions.pdb
+C:\Users\iliasuod\Documents\BookLibrary\BooLibrary.Data\obj\Debug\net6.0\BooLibrary.Data.csproj.AssemblyReference.cache
+C:\Users\iliasuod\Documents\BookLibrary\BooLibrary.Data\obj\Debug\net6.0\BooLibrary.Data.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\iliasuod\Documents\BookLibrary\BooLibrary.Data\obj\Debug\net6.0\BooLibrary.Data.AssemblyInfoInputs.cache
+C:\Users\iliasuod\Documents\BookLibrary\BooLibrary.Data\obj\Debug\net6.0\BooLibrary.Data.AssemblyInfo.cs
+C:\Users\iliasuod\Documents\BookLibrary\BooLibrary.Data\obj\Debug\net6.0\BooLibrary.Data.csproj.CoreCompileInputs.cache
+C:\Users\iliasuod\Documents\BookLibrary\BooLibrary.Data\obj\Debug\net6.0\BooLibrary.Data.csproj.CopyComplete
+C:\Users\iliasuod\Documents\BookLibrary\BooLibrary.Data\obj\Debug\net6.0\BooLibrary.Data.dll
+C:\Users\iliasuod\Documents\BookLibrary\BooLibrary.Data\obj\Debug\net6.0\ref\BooLibrary.Data.dll
+C:\Users\iliasuod\Documents\BookLibrary\BooLibrary.Data\obj\Debug\net6.0\BooLibrary.Data.pdb
+C:\Users\iliasuod\Documents\BookLibrary\BooLibrary.Data\obj\Debug\net6.0\BooLibrary.Data.genruntimeconfig.cache

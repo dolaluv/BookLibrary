@@ -1,0 +1,11 @@
+C:\Users\iliasuod\Documents\BookLibrary\BooLibrary.Data.Mock\bin\Debug\net6.0\BooLibrary.Data.Mock.deps.json
+C:\Users\iliasuod\Documents\BookLibrary\BooLibrary.Data.Mock\bin\Debug\net6.0\BooLibrary.Data.Mock.dll
+C:\Users\iliasuod\Documents\BookLibrary\BooLibrary.Data.Mock\bin\Debug\net6.0\ref\BooLibrary.Data.Mock.dll
+C:\Users\iliasuod\Documents\BookLibrary\BooLibrary.Data.Mock\bin\Debug\net6.0\BooLibrary.Data.Mock.pdb
+C:\Users\iliasuod\Documents\BookLibrary\BooLibrary.Data.Mock\obj\Debug\net6.0\BooLibrary.Data.Mock.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\iliasuod\Documents\BookLibrary\BooLibrary.Data.Mock\obj\Debug\net6.0\BooLibrary.Data.Mock.AssemblyInfoInputs.cache
+C:\Users\iliasuod\Documents\BookLibrary\BooLibrary.Data.Mock\obj\Debug\net6.0\BooLibrary.Data.Mock.AssemblyInfo.cs
+C:\Users\iliasuod\Documents\BookLibrary\BooLibrary.Data.Mock\obj\Debug\net6.0\BooLibrary.Data.Mock.csproj.CoreCompileInputs.cache
+C:\Users\iliasuod\Documents\BookLibrary\BooLibrary.Data.Mock\obj\Debug\net6.0\BooLibrary.Data.Mock.dll
+C:\Users\iliasuod\Documents\BookLibrary\BooLibrary.Data.Mock\obj\Debug\net6.0\ref\BooLibrary.Data.Mock.dll
+C:\Users\iliasuod\Documents\BookLibrary\BooLibrary.Data.Mock\obj\Debug\net6.0\BooLibrary.Data.Mock.pdb
