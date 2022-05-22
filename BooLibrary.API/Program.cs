@@ -1,4 +1,10 @@
+using BooLibrary.Abstractions.Helper;
+using BooLibrary.Abstractions.Services.Business;
+using BooLibrary.Abstractions.Services.Data;
+using BooLibrary.Business;
+using BooLibrary.Data;
 using BooLibrary.Data.Data;
+using BooLibrary.Data.Mock;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -15,6 +21,29 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
 
 });
+
+builder.Services.AddScoped<ICategoryService, CategoryService>();
+
+var getSection = builder.Configuration;
+var appSettingsSection = getSection.GetSection("AppSettings");
+var appSettings = appSettingsSection.Get<AppSettings>();
+
+if (appSettings.UseMock)
+{
+   
+    builder.Services.AddScoped<ICategoryDataService, MockCategoryDataService>();
+
+
+}
+else
+{
+    
+    builder.Services.AddScoped<ICategoryDataService, CategoryDataService>();
+    
+}
+
+
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

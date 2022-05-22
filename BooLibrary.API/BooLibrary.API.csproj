@@ -17,6 +17,8 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\BooLibrary.Business\BooLibrary.Business.csproj" />
+    <ProjectReference Include="..\BooLibrary.Data.Mock\BooLibrary.Data.Mock.csproj" />
     <ProjectReference Include="..\BooLibrary.Data\BooLibrary.Data.csproj" />
   </ItemGroup>
 
