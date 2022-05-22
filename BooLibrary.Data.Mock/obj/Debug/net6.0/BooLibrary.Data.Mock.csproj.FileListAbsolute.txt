@@ -9,3 +9,4 @@ C:\Users\iliasuod\Documents\BookLibrary\BooLibrary.Data.Mock\obj\Debug\net6.0\Bo
 C:\Users\iliasuod\Documents\BookLibrary\BooLibrary.Data.Mock\obj\Debug\net6.0\BooLibrary.Data.Mock.dll
 C:\Users\iliasuod\Documents\BookLibrary\BooLibrary.Data.Mock\obj\Debug\net6.0\ref\BooLibrary.Data.Mock.dll
 C:\Users\iliasuod\Documents\BookLibrary\BooLibrary.Data.Mock\obj\Debug\net6.0\BooLibrary.Data.Mock.pdb
+C:\Users\iliasuod\Documents\BookLibrary\BooLibrary.Data.Mock\obj\Debug\net6.0\BooLibrary.Data.Mock.csproj.AssemblyReference.cache
