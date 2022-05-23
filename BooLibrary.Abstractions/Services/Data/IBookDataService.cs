@@ -16,5 +16,8 @@ namespace BooLibrary.Abstractions.Services.Data
         Task<bool> UpdateBook(Book book);
         Task<bool> CreateBooksCategory(List<BookCategory> bookCategories);
         Task<bool> BookCategoryExist(BookCategory bookCategory);
+        Task<bool> CreateBookFavourites(List<Favourite> favourites);
+        Task<Book> RemoveBookByID(int id);
+
     }
 }

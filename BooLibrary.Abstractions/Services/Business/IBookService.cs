@@ -16,5 +16,7 @@ namespace BooLibrary.Abstractions.Services.Business
         Task<StatusMessage> CreateBook(BookDto bookDto);
         Task<StatusMessage> UpdateBook(int Id, BookDto bookDto);
         Task<StatusMessage> AddBooksCategory(List<BookCategoryDto> bookCategoryDtos);
+        Task<StatusMessage> AddBooksToFavourite(List<FavouriteDto> favouriteDtos);
+        Task<bool> DeleteBookByID(int id);
     }
 }

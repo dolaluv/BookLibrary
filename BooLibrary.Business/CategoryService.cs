@@ -41,6 +41,31 @@ namespace BooLibrary.Business
             return statusMessage;
         }
 
+        public async Task<StatusMessage> DeleteCategoryID(int id)
+        {
+            StatusMessage statusMessage = new StatusMessage();
+            try
+            {
+                var Findcategory = await this.categoryDataService.GetCategory(id);
+                if (Findcategory == null)
+                {
+                    statusMessage.Message = "Unable to find Category";
+                    return statusMessage;
+                }
+              await this.categoryDataService.RemoveCategoryFromBookCategory(id);
+             var remove =   await this.categoryDataService.RemoveCategoryID(id);
+               
+                statusMessage.Status = await this.categoryDataService.RemoveCategoryID(id);
+                statusMessage.Message = statusMessage.Status ? "Category Deleted" : "Unable to delete Category";
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
+
+            return statusMessage;
+        }
+
         public async Task<List<Category>> GetCategories()
         {
             List<Category> categories = new List<Category>();

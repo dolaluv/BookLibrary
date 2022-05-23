@@ -61,6 +61,38 @@ namespace BooLibrary.Business
             return statusMessage;
         }
 
+        public async Task<StatusMessage> AddBooksToFavourite(List<FavouriteDto> favouriteDtos)
+        {
+            StatusMessage statusMessage = new StatusMessage();
+            List<Favourite> _favourites = new List<Favourite>();
+            try
+            {
+                var favourites = _mapper.Map<List<FavouriteDto>, List<Favourite>>(favouriteDtos);
+                foreach (var favourite in favourites)
+                { 
+                    var BookExist = await this.bookDataService.GetBook(favourite.BookId);
+                    if ( BookExist == null)
+                        continue;
+
+                    _favourites.Add(favourite);
+                }
+                if (_favourites.Count <= 0)
+                {
+                    statusMessage.Message = "No Linking Book to add to favourites";
+                    statusMessage.Status = false;
+                    return statusMessage;
+                }
+                statusMessage.Status = await this.bookDataService.CreateBookFavourites(_favourites);
+                statusMessage.Message = statusMessage.Status ? "Books Added to Favourites" : "Unable to add Book to Favourite";
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
+
+            return statusMessage;
+        }
+
         public async Task<StatusMessage> CreateBook(BookDto bookDto)
         {
             StatusMessage statusMessage = new StatusMessage();
@@ -77,6 +109,11 @@ namespace BooLibrary.Business
             }
 
             return statusMessage;
+        }
+
+        public Task<bool> DeleteBookByID(int id)
+        {
+            throw new NotImplementedException();
         }
 
         public async Task<Book> GetBook(int id)

@@ -128,11 +128,35 @@ namespace BooLibrary.API.Controllers
             }
 
         }
-
-        // DELETE api/<CategoryController>/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
+        [HttpPost("AddBooksToFavourite")]
+        [ProducesResponseType(typeof(ResponseModel), 200)]
+        public async Task<IActionResult> BooksToFavourite([FromBody] List<FavouriteDto> favouriteDtos)
         {
+            try
+            {
+                try
+                {
+                    var result = await bookService.AddBooksToFavourite(favouriteDtos);
+                    if (result != null && result.Status)
+                        return Ok(StandardResponse.Ok(" Added Successfully", result));
+                    else if (!result.Status)
+                        return Ok(StandardResponse.Ok("Failed", result));
+                    else
+                        return BadRequest(StandardResponse.BadRequest("An error occured"));
+                }
+                catch (Exception ex)
+                {
+                    return StatusCode(500, StandardResponse.InternalServerError(ex.ToString(), null));
+                }
+
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, StandardResponse.InternalServerError(ex.ToString(), null));
+            }
+
         }
+
+        
     }
 }

@@ -15,6 +15,7 @@ namespace BooLibrary.Abstractions.Services.Business
         Task<Category> GetCategory(int id);
         Task<StatusMessage> CreateCategory(CategoryDto categoryDto );
         Task<StatusMessage> UpdateCategory(int Id, CategoryDto categoryDto);
-      
+        Task<StatusMessage> DeleteCategoryID(int id);
+
     }
 }

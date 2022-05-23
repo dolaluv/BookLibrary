@@ -16,7 +16,17 @@ namespace BooLibrary.Data.Mock
             throw new NotImplementedException();
         }
 
+        public Task<bool> BookCategoryExist(List<Favourite> favourites)
+        {
+            throw new NotImplementedException();
+        }
+
         public Task<bool> CreateBook(Book book)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<bool> CreateBookFavourites(List<Favourite> favourites)
         {
             throw new NotImplementedException();
         }
@@ -32,6 +42,11 @@ namespace BooLibrary.Data.Mock
         }
 
         public Task<Book> GetBook(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<Book> RemoveBookByID(int id)
         {
             throw new NotImplementedException();
         }

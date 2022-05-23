@@ -33,6 +33,22 @@ namespace BooLibrary.Data
             return book == null? false : true;
         }
 
+        public async Task<bool> CreateBookFavourites(List<Favourite> favourites)
+        {
+            var result = 0;
+            try
+            {
+                _db.favourites.AddRangeAsync(favourites);
+                result = _db.SaveChanges();
+
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
+            return result > 0;
+        }
+
         public async Task<bool> CreateBook(Book book)
         {
             var result = 0;
@@ -107,6 +123,11 @@ namespace BooLibrary.Data
                 throw;
             }
             return result > 0;
+        }
+
+        public Task<Book> RemoveBookByID(int id)
+        {
+            throw new NotImplementedException();
         }
     }
 

@@ -26,6 +26,16 @@ namespace BooLibrary.Data.Mock
             throw new NotImplementedException();
         }
 
+        public Task RemoveCategoryFromBookCategory(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<bool> RemoveCategoryID(int id)
+        {
+            throw new NotImplementedException();
+        }
+
         public Task<bool> UpdateCategory(Category category)
         {
             throw new NotImplementedException();

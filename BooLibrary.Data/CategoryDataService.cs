@@ -63,6 +63,25 @@ namespace BooLibrary.Data
             return category;
         }
 
+        public async Task RemoveCategoryFromBookCategory(int id)
+        {
+          
+            try
+            {
+                var findToRemove = _db.BooksCategory.Where(c => c.CategoryId== id);
+                _db.BooksCategory.RemoveRange(findToRemove);
+                _db.SaveChanges();
+
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
+           
+        }
+
+        
+
         public async Task<bool> UpdateCategory(Category category)
         {
             var result = 0;
@@ -71,6 +90,23 @@ namespace BooLibrary.Data
                 _db.Categories.Update(category);
               result = _db.SaveChanges();
                 
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
+            return result > 0;
+        }
+
+        public async Task<bool> RemoveCategoryID(int id)
+        {
+            var result = 0;
+            try
+            {
+                var findToRemove = _db.Categories.FirstOrDefault(c => c.Id == id);
+                _db.Categories.Remove(findToRemove);
+                result = _db.SaveChanges();
+
             }
             catch (Exception ex)
             {

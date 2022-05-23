@@ -14,5 +14,7 @@ namespace BooLibrary.Abstractions.Services.Data
         Task<Category> GetCategory(int id);
         Task<bool> CreateCategory(Category category);
         Task<bool> UpdateCategory(Category category);
+        Task<bool> RemoveCategoryID(int id);
+        Task RemoveCategoryFromBookCategory(int id);
     }
 }

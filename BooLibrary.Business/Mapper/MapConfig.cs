@@ -20,6 +20,7 @@ namespace BooLibrary.Business.Mapper
                 config.CreateMap<CategoryDto, Category>().ReverseMap();
                 config.CreateMap<BookDto, Book>().ReverseMap();
                 config.CreateMap<BookCategoryDto, BookCategory>().ReverseMap();
+                config.CreateMap<FavouriteDto, Favourite>().ReverseMap();
 
             });
 
