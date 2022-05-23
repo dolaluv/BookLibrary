@@ -1,7 +1,9 @@
+using AutoMapper;
 using BooLibrary.Abstractions.Helper;
 using BooLibrary.Abstractions.Services.Business;
 using BooLibrary.Abstractions.Services.Data;
 using BooLibrary.Business;
+using BooLibrary.Business.Mapper;
 using BooLibrary.Data;
 using BooLibrary.Data.Data;
 using BooLibrary.Data.Mock;
@@ -22,16 +24,22 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
 
 });
 
-builder.Services.AddScoped<ICategoryService, CategoryService>();
+builder.Services.AddScoped<ICategoryService, CategoryService>(); 
+builder.Services.AddScoped<IBookService, BookService>();
 
 var getSection = builder.Configuration;
 var appSettingsSection = getSection.GetSection("AppSettings");
 var appSettings = appSettingsSection.Get<AppSettings>();
 
+
+IMapper mapper = MapConfig.RegristerMapper().CreateMapper();
+builder.Services.AddSingleton(mapper);
+ 
 if (appSettings.UseMock)
 {
    
     builder.Services.AddScoped<ICategoryDataService, MockCategoryDataService>();
+    builder.Services.AddScoped<IBookDataService, MockBookDataService>();
 
 
 }
@@ -39,7 +47,8 @@ else
 {
     
     builder.Services.AddScoped<ICategoryDataService, CategoryDataService>();
-    
+    builder.Services.AddScoped<IBookDataService, BookDataService>();
+
 }
 
 

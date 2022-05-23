@@ -19,19 +19,20 @@ namespace BooLibrary.Data
             _db = db;
         }
 
-        public async Task<bool> CreateCategory(CategoryDto categoryDto )
+        public async Task<bool> CreateCategory(Category category )
         {
-            var result = false;
+            var result = 0;
             try
             {
-              //  _db.Categories.Add(category);
-                _db.SaveChanges();
+               _db.Categories.Add(category);
+              result =  _db.SaveChanges();
+                
             }
             catch (Exception ex)
             {
                 throw;
             }
-            return result;
+            return result > 0;
         }
 
         public async Task<List<Category>> Get()
@@ -64,17 +65,18 @@ namespace BooLibrary.Data
 
         public async Task<bool> UpdateCategory(Category category)
         {
-            var result = false;
+            var result = 0;
             try
             {
                 _db.Categories.Update(category);
-                _db.SaveChanges();
+              result = _db.SaveChanges();
+                
             }
             catch (Exception ex)
             {
                 throw;
             }
-            return result;
+            return result > 0;
         }
     }
 }

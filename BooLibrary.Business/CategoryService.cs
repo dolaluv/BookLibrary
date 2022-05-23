@@ -1,4 +1,5 @@
-﻿using BooLibrary.Abstractions.Models;
+﻿using AutoMapper;
+using BooLibrary.Abstractions.Models;
 using BooLibrary.Abstractions.Models.Dtos;
 using BooLibrary.Abstractions.Services.Business;
 using BooLibrary.Abstractions.Services.Data;
@@ -14,10 +15,12 @@ namespace BooLibrary.Business
     public class CategoryService : ICategoryService
     {
         private readonly ICategoryDataService categoryDataService;
+        private readonly IMapper _mapper;
 
-        public CategoryService(ICategoryDataService categoryDataService)
+        public CategoryService(ICategoryDataService categoryDataService, IMapper mapper)
         {
             this.categoryDataService = categoryDataService;
+            _mapper = mapper;
         }
 
         public async Task<StatusMessage> CreateCategory(CategoryDto categoryDto)
@@ -25,7 +28,9 @@ namespace BooLibrary.Business
             StatusMessage statusMessage = new StatusMessage();
             try
             {
-                statusMessage.Status = await this.categoryDataService.CreateCategory(categoryDto);
+                var category = _mapper.Map<CategoryDto, Category>(categoryDto);
+
+                statusMessage.Status = await this.categoryDataService.CreateCategory(category);
                 statusMessage.Message = statusMessage.Status ? "Category Added" : "Unable to add Category";
             }
             catch (Exception ex)
@@ -61,16 +66,24 @@ namespace BooLibrary.Business
             {
                 throw;
             }
-            return category;
+            return category == null? new Category() : category;
         }
 
-        public async Task<StatusMessage> UpdateCategory(Category category)
+        public async Task<StatusMessage> UpdateCategory(int Id, CategoryDto categoryDto)
         {
             StatusMessage statusMessage  = new StatusMessage();
             try
             {
-                statusMessage.Status = await this.categoryDataService.UpdateCategory(category);
-                statusMessage.Message = statusMessage.Status ? "Category Added" : "Unable to update Category";
+               var  Findcategory = await this.categoryDataService.GetCategory(Id);
+                if (Findcategory == null)
+                {
+                    statusMessage.Message = "Unable to find Category";
+                    return statusMessage;
+                }
+                Findcategory.CategoryName = categoryDto.CategoryName;
+                Findcategory.CategoryDescription = categoryDto.CategoryDescription;
+                statusMessage.Status = await this.categoryDataService.UpdateCategory(Findcategory);
+                statusMessage.Message = statusMessage.Status ? "Category Updated" : "Unable to update Category";
             }
             catch (Exception ex)
             {

@@ -11,9 +11,10 @@ namespace BooLibrary.Abstractions.Models
     {
         public int Id { get; set; }
         public string BookName { get; set; }
+        public string BookDescription { get; set; }
+        public DateTime CurrentDate { get; set; } = DateTime.Now;    
 
-        [ForeignKey("Category")]
-        public int CategoryId { get; set; }
-        public Category StaffUser { get; set; }
+
+       
     }
 }

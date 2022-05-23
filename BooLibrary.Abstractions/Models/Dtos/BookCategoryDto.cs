@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace BooLibrary.Abstractions.Models.Dtos
 {
-    public class CategoryDto
+    public class BookCategoryDto
     {
-        public string CategoryName { get; set; }
-        public string CategoryDescription { get; set; }
+        public int CategoryId { get; set; }
+        public int BooKId { get; set; }
     }
 }

@@ -28,7 +28,7 @@ namespace BooLibrary.API.Controllers
             {  
                 var categories = await categoryService.GetCategories();
                 if (categories != null)
-                    return Ok(StandardResponse.Ok("Successfully fetch loan history", categories));
+                    return Ok(StandardResponse.Ok("Successfully fetch Categories", categories));
                 else
                     return BadRequest(StandardResponse.BadRequest("An error occured"));
             }
@@ -46,8 +46,10 @@ namespace BooLibrary.API.Controllers
             try
             {
                 var category = await categoryService.GetCategory(Id);
-                if (category != null)
-                    return Ok(StandardResponse.Ok("Successfully fetch Category", category));
+                if (category != null && !string.IsNullOrEmpty(category.CategoryName))
+                    return Ok(StandardResponse.Ok("Successfully fetched Category", category));
+                else if (category != null && string.IsNullOrEmpty(category.CategoryName))
+                    return Ok(StandardResponse.Ok("Category Not Found"));
                 else
                     return BadRequest(StandardResponse.BadRequest("An error occured"));
             }
@@ -58,7 +60,7 @@ namespace BooLibrary.API.Controllers
         }
 
 
-        // POST api/<CategoryController>
+       
         [HttpPost("CreateCategory")]
         [ProducesResponseType(typeof(ResponseModel), 200)]
         public async Task<IActionResult> CreateCategory([FromBody] CategoryDto categoryDto)
@@ -67,7 +69,7 @@ namespace BooLibrary.API.Controllers
             {
                 var result = await categoryService.CreateCategory(categoryDto);
                 if (result != null)
-                    return Ok(StandardResponse.Ok("Category Added Successfully", result));
+                    return Ok(StandardResponse.Ok("Added Successfully", result));
                 else
                     return BadRequest(StandardResponse.BadRequest("An error occured"));
             }
@@ -75,19 +77,21 @@ namespace BooLibrary.API.Controllers
             {
                 return StatusCode(500, StandardResponse.InternalServerError(ex.ToString(), null));
             }
-            return null;
+            
         }
 
-        // PUT api/<CategoryController>/5
-        [HttpPut("UpdateCategory")]
+        
+        [HttpPut("UpdateCategory/{Id}")]
         [ProducesResponseType(typeof(ResponseModel), 200)]
-        public async Task<IActionResult> UpdateCategory([FromBody] Category category )
+        public async Task<IActionResult> UpdateCategory([FromBody] CategoryDto categoryDto, int Id )
         {
             try
             {
-                var result = await categoryService.UpdateCategory(category);
-                if (result != null)
-                    return Ok(StandardResponse.Ok("Category Added Successfully", result));
+                var result = await categoryService.UpdateCategory(Id, categoryDto);
+                if (result != null && result.Status)
+                    return Ok(StandardResponse.Ok(" Updated Successfully", result));
+                else if (!result.Status)
+                    return Ok(StandardResponse.Ok(" Updated Failed", result));
                 else
                     return BadRequest(StandardResponse.BadRequest("An error occured"));
             }
@@ -95,10 +99,10 @@ namespace BooLibrary.API.Controllers
             {
                 return StatusCode(500, StandardResponse.InternalServerError(ex.ToString(), null));
             }
-            return null;
+            
         }
 
-        // DELETE api/<CategoryController>/5
+        
         [HttpDelete("{id}")]
         public void Delete(int id)
         {

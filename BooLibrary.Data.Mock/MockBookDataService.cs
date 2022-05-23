@@ -9,24 +9,34 @@ using System.Threading.Tasks;
 
 namespace BooLibrary.Data.Mock
 {
-    public class MockCategoryDataService : ICategoryDataService
+    public class MockBookDataService : IBookDataService
     {
-        public Task<bool> CreateCategory(Category category )
+        public Task<bool> BookCategoryExist(BookCategory bookCategory)
         {
             throw new NotImplementedException();
         }
 
-        public Task<List<Category>> Get()
+        public Task<bool> CreateBook(Book book)
         {
             throw new NotImplementedException();
         }
 
-        public Task<Category> GetCategory(int id)
+        public Task<bool> CreateBooksCategory(List<BookCategory> bookCategories)
         {
             throw new NotImplementedException();
         }
 
-        public Task<bool> UpdateCategory(Category category)
+        public Task<List<Book>> Get()
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<Book> GetBook(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<bool> UpdateBook(Book book)
         {
             throw new NotImplementedException();
         }

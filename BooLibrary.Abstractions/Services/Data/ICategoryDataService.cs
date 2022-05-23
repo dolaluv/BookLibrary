@@ -12,7 +12,7 @@ namespace BooLibrary.Abstractions.Services.Data
     {
         Task<List<Category>> Get();
         Task<Category> GetCategory(int id);
-        Task<bool> CreateCategory(CategoryDto categoryDto);
+        Task<bool> CreateCategory(Category category);
         Task<bool> UpdateCategory(Category category);
     }
 }

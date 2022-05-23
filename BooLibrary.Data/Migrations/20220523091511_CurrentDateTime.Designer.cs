@@ -4,6 +4,7 @@ using BooLibrary.Data.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BooLibrary.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220523091511_CurrentDateTime")]
+    partial class CurrentDateTime
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -54,7 +56,7 @@ namespace BooLibrary.Data.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
-                    b.Property<int>("BookId")
+                    b.Property<int>("BoodId")
                         .HasColumnType("int");
 
                     b.Property<int>("CategoryId")
@@ -63,11 +65,14 @@ namespace BooLibrary.Data.Migrations
                     b.Property<DateTime>("CurrentDate")
                         .HasColumnType("datetime2");
 
+                    b.Property<int>("bookId")
+                        .HasColumnType("int");
+
                     b.HasKey("Id");
 
-                    b.HasIndex("BookId");
-
                     b.HasIndex("CategoryId");
+
+                    b.HasIndex("bookId");
 
                     b.ToTable("BooksCategory");
                 });
@@ -98,15 +103,15 @@ namespace BooLibrary.Data.Migrations
 
             modelBuilder.Entity("BooLibrary.Abstractions.Models.BookCategory", b =>
                 {
-                    b.HasOne("BooLibrary.Abstractions.Models.Book", "book")
-                        .WithMany()
-                        .HasForeignKey("BookId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.HasOne("BooLibrary.Abstractions.Models.Category", "category")
                         .WithMany()
                         .HasForeignKey("CategoryId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("BooLibrary.Abstractions.Models.Book", "book")
+                        .WithMany()
+                        .HasForeignKey("bookId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
